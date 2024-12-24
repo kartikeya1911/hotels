@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Hotel Booking</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Updated CSS path -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>🏨 Welcome to LuxeStay Hotel</h1>
+      <p>Experience luxury and comfort like never before.</p>
+    </div>
+  </header>
+  <main>
+    <section class="navigation">
+      <h2>Explore Our Website</h2>
+      <div class="button-grid">
+        <button onclick="navigateTo('/about')" class="btn"><span>About Us</span></button>
+        <button onclick="navigateTo('/rooms')" class="btn"><span>Room Listings</span></button>
+        <button onclick="navigateTo('/room-details')" class="btn"><span>Room Details</span></button>
+        <button onclick="navigateTo('/booking')" class="btn"><span>Booking</span></button>
+        <button onclick="navigateTo('/payment')" class="btn"><span>Payment</span></button>
+        <button onclick="navigateTo('/profile')" class="btn"><span>Customer Profile</span></button>
+        <button onclick="navigateTo('/contact')" class="btn"><span>Contact Us</span></button>
+        <button onclick="navigateTo('/faq')" class="btn"><span>FAQ</span></button>
+        <button onclick="navigateTo('/admin')" class="btn"><span>Admin Dashboard</span></button>
+        <button onclick="navigateTo('/confirmation')" class="btn"><span>Confirmation</span></button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 LuxeStay Hotel. All Rights Reserved.</p>
+  </footer>
+  <script>
+    // JavaScript function to redirect using the server
+    function navigateTo(path) {
+      window.location.href = path;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* General Styling */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #f7f7f7);
+  color: #333;
+}
+
+header {
+  background: url('https://source.unsplash.com/1600x900/?hotel,luxury') no-repeat center center/cover;
+  color: white;
+  padding: 50px 20px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+header .header-content h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+header .header-content p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Button Grid */
+.navigation .button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(45deg, #007BFF, #00d4ff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.btn:hover {
+  background: linear-gradient(45deg, #0056b3, #00a1cc);
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-45deg);
+  transition: all 0.5s;
+  z-index: 1;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+footer {
+  margin-top: 20px;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
