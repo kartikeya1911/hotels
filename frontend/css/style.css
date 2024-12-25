@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 10px 0;
+}
+.contact-info p {
+  padding: 15px;
+  color: #fff; /* Adjust text color to contrast with the background */
+  font-size: 14px;
+}
+
+.logo-container {
+  position: absolute;
+  top: 5px; /* Adjust the vertical alignment */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11; /* Ensure the logo appears on top of everything */
+}
+
+.logo {
+  height: 100px; /* Adjust the size as needed */
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  width: max-content;
+  margin: 8vh auto 0 auto; /* Center horizontally by setting auto for left and right margins */
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent background for better visibility */
+  padding: 1px;
+}
+
+.nav-link {
+  color: #fff !important; /* Ensure the text is visible over the image */
+}
+
+.carousel-caption {
+  top: 25vh;
+  color: white;
+}
+
+.carousel-caption h3{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.carousel-caption p{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+}
