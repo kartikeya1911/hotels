@@ -4,7 +4,8 @@ const path = require('path');
 
 const PORT = 2000;
 const BASE_DIR = path.join(__dirname, '../frontend', 'pages'); // Path to HTML files
-const STATIC_DIR = path.join(__dirname, '../frontend');  // Path to the frontend assets (css, images, js)
+const STATIC_DIR = path.join(__dirname, '../frontend'); // Path to the frontend assets (css, images, js)
+const USERS_FILE = path.join(__dirname, 'users.json'); // Path to store user data
 
 // Helper function to serve files
 function serveFile(res, filePath, contentType) {
@@ -17,6 +18,19 @@ function serveFile(res, filePath, contentType) {
       res.end(data);
     }
   });
+}
+
+// Helper functions for user authentication
+function readUsers() {
+  if (!fs.existsSync(USERS_FILE)) {
+    fs.writeFileSync(USERS_FILE, JSON.stringify([]));
+  }
+  const data = fs.readFileSync(USERS_FILE, 'utf-8');
+  return JSON.parse(data);
+}
+
+function writeUsers(users) {
+  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
 // Content-Type mapping
@@ -32,7 +46,8 @@ const mimeTypes = {
 
 // Create the server
 const server = http.createServer((req, res) => {
-  let filePath;
+  const method = req.method;
+  const url = req.url;
 
   // Serve static assets (css, images, js)
   if (req.url.startsWith('/css') || req.url.startsWith('/images') || req.url.startsWith('/js')) {
@@ -42,8 +57,59 @@ const server = http.createServer((req, res) => {
     return serveFile(res, staticPath, contentType);
   }
 
+  // Authentication API routes
+  if (url === '/register' && method === 'POST') {
+    let body = '';
+    req.on('data', (chunk) => (body += chunk.toString()));
+    req.on('end', () => {
+      const { username, password } = JSON.parse(body);
+      const users = readUsers();
+
+      if (users.some((user) => user.username === username)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'User already exists' }));
+        return;
+      }
+
+      users.push({ username, password });
+      writeUsers(users);
+      res.writeHead(201, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ message: 'Registration successful' }));
+    });
+    return;
+  }
+
+  if (url === '/login' && method === 'POST') {
+    let body = '';
+    req.on('data', (chunk) => (body += chunk.toString()));
+    req.on('end', () => {
+      const { username, password } = JSON.parse(body);
+      const users = readUsers();
+
+      const user = users.find(
+        (user) => user.username === username && user.password === password
+      );
+
+      if (user) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Login successful' }));
+      } else {
+        res.writeHead(401, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Invalid credentials' }));
+      }
+    });
+    return;
+  }
+
+  if (url === '/logout' && method === 'POST') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ message: 'Logout successful' }));
+    return;
+  }
+
   // Routing logic for HTML pages
-  switch (req.url) {
+  let filePath;
+  switch (url) {
     case '/':
       filePath = path.join(BASE_DIR, 'home.html');
       break;
