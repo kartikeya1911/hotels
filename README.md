@@ -1,2 +1,0 @@
-# hotels
-backend project
