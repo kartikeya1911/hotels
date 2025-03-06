@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "username": "test@example.com",
+      "password": "test123"
+    },
+    {
+      "username": "namanchaudhary6546@outlook.com",
+      "password": "1234"
+    },
+    {
+      "username": "Jainkartikeya9@gmail.com",
+      "password": "12345"
+    }
+  ],
+  "hotels": [
+    {
+      "id": 1,
+      "name": "Horizon New York"
+    },
+    {
+      "id": 2,
+      "name": "Horizon London"
+    },
+    {
+      "id": 3,
+      "name": "Horizon Dubai"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LuxeStay Hotels</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/home.html" class="logo">LuxeStay Hotels</a>
+        <div class="nav-links">
+            <a href="/home.html">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/hotels.html">Hotels</a>
+            <div class="dropdown">
+                <a href="#">Explore</a>
+                <div class="dropdown-content">
+                    <a href="/dining.html">Dining</a>
+                    <a href="/virtual-tours.html">Virtual Tours</a>
+                    <a href="/sustainability.html">Sustainability</a>
+                </div>
+            </div>
+            <a href="/contact.html">Contact</a>
+            <a href="/login.html">Login</a>
+            <a href="/register.html">Register</a>
+            <a href="/dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+    <main>
+        <div class="hero-section">
+            <img src="/images/dashboard-bg.jpg" alt="Royal Dashboard">
+            <div class="overlay"></div>
+            <div class="content">
+                <h1>Welcome to Your Royal Dashboard</h1>
+                <p>Oversee your kingdom of luxury stays.</p>
+            </div>
+        </div>
+        <section>
+            <h2>Manage Your Estates</h2>
+            <div id="hotelsList"></div>
+            <form id="hotelForm">
+                <label for="hotelName">New Hotel Name</label>
+                <input type="text" id="hotelName" name="hotelName" required>
+                <button type="submit">Add Hotel</button>
+            </form>
+            <button id="logoutBtn">Depart from Court</button>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-logo">LuxeStay Hotels</div>
+        <div class="footer-links">
+            <a href="/home.html">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/hotels.html">Hotels</a>
+            <a href="/dining.html">Dining</a>
+            <a href="/virtual-tours.html">Virtual Tours</a>
+            <a href="/sustainability.html">Sustainability</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <div class="footer-contact">
+            <p>Email: info@luxestayhotels.com</p>
+            <p>Phone: +1-800-555-1234</p>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-copyright">© 2025 LuxeStay Hotels. All Rights Reserved.</div>
+    </footer>
+    <script src="/js/script.js"></script>
+</body>
+</html>

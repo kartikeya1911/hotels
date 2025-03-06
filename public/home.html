@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - LuxeStay Hotels</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/home.html" class="logo">LuxeStay Hotels</a>
+        <div class="nav-links">
+            <a href="/home.html">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/hotels.html">Hotels</a>
+            <div class="dropdown">
+                <a href="#">Explore</a>
+                <div class="dropdown-content">
+                    <a href="/dining.html">Dining</a>
+                    <a href="/virtual-tours.html">Virtual Tours</a>
+                    <a href="/sustainability.html">Sustainability</a>
+                </div>
+            </div>
+            <a href="/contact.html">Contact</a>
+            <a href="/login.html">Login</a>
+            <a href="/register.html">Register</a>
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="javascript:history.back()">Back</a>
+        </div>
+    </nav>
+    <main>
+        <!-- Hero Slider -->
+        <div class="home-hero-slider">
+            <div class="home-slide home-active" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <div class="home-caption">
+                    <h1>Luxury Accommodations</h1>
+                    <p>Experience unparalleled comfort in our meticulously designed rooms and suites.</p>
+                    <a href="/hotels.html" class="home-cta">Explore Our Hotels</a>
+                </div>
+            </div>
+            <div class="home-slide" style="background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <div class="home-caption">
+                    <h1>Exquisite Dining</h1>
+                    <p>Savor culinary masterpieces crafted by our world-renowned chefs.</p>
+                    <a href="/hotels.html" class="home-cta">Explore Our Hotels</a>
+                </div>
+            </div>
+            <div class="home-slide" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <div class="home-caption">
+                    <h1>Rejuvenating Spa</h1>
+                    <p>Indulge in transformative wellness experiences at our luxury spa.</p>
+                    <a href="/hotels.html" class="home-cta">Explore Our Hotels</a>
+                </div>
+            </div>
+            <button class="home-prev">❮</button>
+            <button class="home-next">❯</button>
+        </div>
+
+        <!-- Booking Widget -->
+        <div class="home-booking-widget">
+            <h2>Book Your Stay</h2>
+            <form id="home-booking-form">
+                <div class="home-form-group">
+                    <label for="location">Location</label>
+                    <select id="location" required>
+                        <option value="">Select a location</option>
+                        <option value="new-york">New York</option>
+                        <option value="london">London</option>
+                        <option value="dubai">Dubai</option>
+                        <option value="tokyo">Tokyo</option>
+                        <option value="paris">Paris</option>
+                    </select>
+                </div>
+                <div class="home-form-group">
+                    <label for="check-in">Check-in Date</label>
+                    <input type="date" id="check-in" required>
+                </div>
+                <div class="home-form-group">
+                    <label for="check-out">Check-out Date</label>
+                    <input type="date" id="check-out" required>
+                </div>
+                <div class="home-form-group">
+                    <label for="guests">Guests</label>
+                    <input type="number" id="guests" min="1" max="10" value="2">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <!-- Featured Hotels -->
+        <section class="home-featured-hotels">
+            <h2>Featured Hotels</h2>
+            <div class="home-grid home-grid-3">
+                <div class="home-hotel-card">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Horizon New York">
+                    <div class="home-rating">★★★★★</div>
+                    <h3>Horizon New York</h3>
+                    <p>Manhattan, New York</p>
+                    <span class="home-price">$450/night</span>
+                    <a href="/hotels.html?id=1" class="home-cta">View Details</a>
+                </div>
+                <div class="home-hotel-card">
+                    <img src="https://images.unsplash.com/photo-1560624052-449f5ddf0c31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Horizon London">
+                    <div class="home-rating">★★★★★</div>
+                    <h3>Horizon London</h3>
+                    <p>Westminster, London</p>
+                    <span class="home-price">$380/night</span>
+                    <a href="/hotels.html?id=2" class="home-cta">View Details</a>
+                </div>
+                <div class="home-hotel-card">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Horizon Dubai">
+                    <div class="home-rating">★★★★★</div>
+                    <h3>Horizon Dubai</h3>
+                    <p>Palm Jumeirah, Dubai</p>
+                    <span class="home-price">$520/night</span>
+                    <a href="/hotels.html?id=3" class="home-cta">View Details</a>
+                </div>
+            </div>
+            <div class="home-text-center">
+                <a href="/hotels.html" class="home-cta">View All Hotels</a>
+            </div>
+        </section>
+
+        <!-- Video Tour -->
+        <section class="home-video-tour">
+            <div class="home-grid home-grid-2">
+                <div>
+                    <h2>Experience Luxury</h2>
+                    <p>Take a virtual journey through our flagship properties and discover the epitome of luxury hospitality.</p>
+                    <div class="home-flex home-items-center home-mt-4">
+                        <div class="home-icon-circle">📅</div>
+                        <div>
+                            <h3>Flexible Booking</h3>
+                            <p>Free cancellation up to 24 hours before check-in</p>
+                        </div>
+                    </div>
+                    <div class="home-flex home-items-center home-mt-4">
+                        <div class="home-weather-icon">☀️</div>
+                        <div>
+                            <span class="home-font-bold">72°F</span>
+                            <span>Sunny</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Hotel Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="home-testimonials">
+            <h2>What Our Guests Say</h2>
+            <div class="home-grid home-grid-3">
+                <div class="home-testimonial-card">
+                    <div class="home-rating">★★★★★</div>
+                    <p>"An unforgettable experience. The staff went above and beyond to make our anniversary special. The attention to detail was impeccable."</p>
+                    <p>- Sarah & John, New York</p>
+                </div>
+                <div class="home-testimonial-card">
+                    <div class="home-rating">★★★★★</div>
+                    <p>"The perfect blend of luxury and comfort. The spa treatments were divine, and the culinary offerings were world-class."</p>
+                    <p>- Michael T., London</p>
+                </div>
+                <div class="home-testimonial-card">
+                    <div class="home-rating">★★★★★</div>
+                    <p>"From the moment we arrived, we felt like royalty. The beachfront suite in Dubai offered breathtaking views and unparalleled luxury."</p>
+                    <p>- Aisha & Khalid, UAE</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nearby Attractions -->
+        <section class="home-nearby-attractions">
+            <h2>Explore Nearby Attractions</h2>
+            <div class="home-grid home-grid-2">
+                <div class="home-attractions-list">
+                    <h3>New York Attractions</h3>
+                    <ul>
+                        <li>Central Park - 0.5 miles</li>
+                        <li>Metropolitan Museum of Art - 1.2 miles</li>
+                        <li>Times Square - 1.5 miles</li>
+                        <li>Empire State Building - 2.0 miles</li>
+                    </ul>
+                    <button onclick="window.open('https://www.google.com/maps/search/attractions+near+new+york', '_blank')">View All Nearby Attractions</button>
+                </div>
+                <div class="home-map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256349542!2d-73.98329492426285!3d40.75903097138801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1710284283131!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" title="Map of New York Attractions"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="home-newsletter">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Stay updated with exclusive offers, travel tips, and news from LuxeStay Hotels.</p>
+            <form id="home-newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-logo">LuxeStay Hotels</div>
+        <div class="footer-links">
+            <a href="/home.html">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/hotels.html">Hotels</a>
+            <a href="/dining.html">Dining</a>
+            <a href="/virtual-tours.html">Virtual Tours</a>
+            <a href="/sustainability.html">Sustainability</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <div class="footer-contact">
+            <p>Email: info@luxestayhotels.com</p>
+            <p>Phone: +1-800-555-1234</p>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-copyright">© 2025 LuxeStay Hotels. All Rights Reserved.</div>
+    </footer>
+    <script src="/js/script.js"></script>
+</body>
+</html>
