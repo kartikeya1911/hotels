@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Our Rooms - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/components.css">
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="stylesheet" href="/css/rooms.css">
+    </head>
+    <body>
+        <%- include('partials/nav') %>
+
+        <main class="rooms-container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="content">
+                    <h1>Our Rooms</h1>
+                    <p>Discover our luxurious accommodations designed for your comfort</p>
+                </div>
+            </section>
+
+            <!-- Filters Section -->
+            <section class="filters">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search rooms...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-options">
+                    <select id="roomType">
+                        <option value="">All Room Types</option>
+                        <option value="Deluxe Room">Deluxe Room</option>
+                        <option value="Executive Suite">Executive Suite</option>
+                        <option value="Family Suite">Family Suite</option>
+                        <option value="Business Suite">Business Suite</option>
+                        <option value="Penthouse Suite">Penthouse Suite</option>
+                    </select>
+                    <select id="priceRange">
+                        <option value="">All Prices</option>
+                        <option value="0-200">$0 - $200</option>
+                        <option value="201-500">$201 - $500</option>
+                        <option value="501-1000">$501 - $1000</option>
+                        <option value="1001+">$1001+</option>
+                    </select>
+                    <select id="occupancy">
+                        <option value="">All Occupancy</option>
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5+">5+ Guests</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Rooms Grid -->
+            <section class="rooms-grid">
+                <!-- Room Card 1 -->
+                <div class="room-card" data-aos="fade-up">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1680503146476-abb8c752e1f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RGVsdXglMjByb29tc3xlbnwwfDB8MHx8fDA%3D" alt="Deluxe Room">
+                        <div class="room-badge">Popular</div>
+                    </div>
+                    <div class="room-info">
+                        <h3>Deluxe Room</h3>
+                        <p class="room-description">Spacious room with city view, perfect for couples or solo travelers.</p>
+                        <div class="room-features">
+                            <span><i class="fas fa-bed"></i> King Bed</span>
+                            <span><i class="fas fa-users"></i> 2 Guests</span>
+                            <span><i class="fas fa-ruler-combined"></i> 35m²</span>
+                        </div>
+                        <div class="room-price">
+                            <span class="price">$200</span>
+                            <span class="per-night">per night</span>
+                        </div>
+                        <a href="/booking/new-york?room=Deluxe%20Room" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Room Card 2 -->
+                <div class="room-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="room-image">
+                        <img src="https://plus.unsplash.com/premium_photo-1727423645443-1001ac5d5768?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8RXhlY3V0aXZlJTIwU3VpdGUlMjByb29tfGVufDB8MHwwfHx8MA%3D%3D" alt="Executive Suite">
+                        <div class="room-badge">Premium</div>
+                    </div>
+                    <div class="room-info">
+                        <h3>Executive Suite</h3>
+                        <p class="room-description">Luxury suite with separate living area and premium amenities.</p>
+                        <div class="room-features">
+                            <span><i class="fas fa-bed"></i> King Bed</span>
+                            <span><i class="fas fa-users"></i> 2 Guests</span>
+                            <span><i class="fas fa-ruler-combined"></i> 50m²</span>
+                        </div>
+                        <div class="room-price">
+                            <span class="price">$350</span>
+                            <span class="per-night">per night</span>
+                        </div>
+                        <a href="/booking/new-york?room=Executive%20Suite" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Room Card 3 -->
+                <div class="room-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="room-image">
+                        <img src="https://plus.unsplash.com/premium_photo-1663051211299-16f4d429b740?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8RmFtaWx5JTIwcm9vbSUyMG9mJTIwaG90ZWx8ZW58MHwwfDB8fHww" alt="Family Suite">
+                        <div class="room-badge">Family</div>
+                    </div>
+                    <div class="room-info">
+                        <h3>Family Suite</h3>
+                        <p class="room-description">Spacious suite perfect for families with separate bedrooms.</p>
+                        <div class="room-features">
+                            <span><i class="fas fa-bed"></i> 2 Queen Beds</span>
+                            <span><i class="fas fa-users"></i> 4 Guests</span>
+                            <span><i class="fas fa-ruler-combined"></i> 65m²</span>
+                        </div>
+                        <div class="room-price">
+                            <span class="price">$450</span>
+                            <span class="per-night">per night</span>
+                        </div>
+                        <a href="/booking/new-york?room=Family%20Suite" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Booking Modal -->
+        <div id="bookingModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Book Your Stay</h2>
+                <form id="bookingForm">
+                    <input type="hidden" id="roomTypeInput" name="roomType">
+                    <input type="hidden" id="pricePerNight" name="pricePerNight">
+                    
+                    <div class="form-group">
+                        <label for="checkIn">Check-in Date</label>
+                        <input type="date" id="checkIn" name="checkIn" required min="">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkOut">Check-out Date</label>
+                        <input type="date" id="checkOut" name="checkOut" required min="">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <input type="number" id="guests" name="guests" min="1" max="10" value="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requests</label>
+                        <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Any special requests or requirements?"></textarea>
+                    </div>
+                    
+                    <div class="booking-summary">
+                        <h3>Booking Summary</h3>
+                        <div class="summary-item">
+                            <span>Room Type:</span>
+                            <span id="summaryRoomType"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Price per night:</span>
+                            <span id="summaryPrice"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Total nights:</span>
+                            <span id="summaryNights">0</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total Price:</span>
+                            <span id="summaryTotal">$0</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-booking">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+
+            // Set minimum dates for check-in and check-out
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkIn').min = today;
+            document.getElementById('checkOut').min = today;
+
+            // Modal functionality
+            const modal = document.getElementById('bookingModal');
+            const closeBtn = document.querySelector('.close-modal');
+            const bookingForm = document.getElementById('bookingForm');
+
+            function openBookingModal(roomType, pricePerNight) {
+                modal.style.display = 'block';
+                document.getElementById('roomTypeInput').value = roomType;
+                document.getElementById('pricePerNight').value = pricePerNight;
+                document.getElementById('summaryRoomType').textContent = roomType;
+                document.getElementById('summaryPrice').textContent = `$${pricePerNight}`;
+                updateBookingSummary();
+            }
+
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            // Update booking summary
+            function updateBookingSummary() {
+                const checkIn = new Date(document.getElementById('checkIn').value);
+                const checkOut = new Date(document.getElementById('checkOut').value);
+                const pricePerNight = parseFloat(document.getElementById('pricePerNight').value);
+
+                if (checkIn && checkOut && !isNaN(pricePerNight)) {
+                    const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                    const total = nights * pricePerNight;
+
+                    document.getElementById('summaryNights').textContent = nights;
+                    document.getElementById('summaryTotal').textContent = `$${total}`;
+                }
+            }
+
+            // Add event listeners for date changes
+            document.getElementById('checkIn').addEventListener('change', updateBookingSummary);
+            document.getElementById('checkOut').addEventListener('change', updateBookingSummary);
+
+            // Handle form submission
+            bookingForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Check if user is logged in
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    alert('Please log in to book a room');
+                    window.location.href = '/login';
+                    return;
+                }
+
+                const formData = {
+                    roomType: document.getElementById('roomTypeInput').value,
+                    checkIn: document.getElementById('checkIn').value,
+                    checkOut: document.getElementById('checkOut').value,
+                    guests: parseInt(document.getElementById('guests').value),
+                    specialRequests: document.getElementById('specialRequests').value,
+                    totalPrice: parseFloat(document.getElementById('summaryTotal').textContent.replace('$', ''))
+                };
+
+                try {
+                    const response = await fetch('/api/bookings', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert('Booking successful! We will contact you shortly to confirm your reservation.');
+                        modal.style.display = 'none';
+                        bookingForm.reset();
+                    } else {
+                        alert(data.message || 'Booking failed. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again later.');
+                }
+            });
+
+            // Filter functionality
+            const searchInput = document.getElementById('searchInput');
+            const roomTypeSelect = document.getElementById('roomType');
+            const priceRangeSelect = document.getElementById('priceRange');
+            const occupancySelect = document.getElementById('occupancy');
+            const roomCards = document.querySelectorAll('.room-card');
+
+            function filterRooms() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedType = roomTypeSelect.value;
+                const selectedPrice = priceRangeSelect.value;
+                const selectedOccupancy = occupancySelect.value;
+
+                roomCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent;
+                    const price = parseFloat(card.querySelector('.price').textContent.replace('$', ''));
+                    const occupancy = card.querySelector('.room-features span:nth-child(2)').textContent;
+
+                    const matchesSearch = title.toLowerCase().includes(searchTerm);
+                    const matchesType = !selectedType || title === selectedType;
+                    const matchesPrice = !selectedPrice || checkPriceRange(price, selectedPrice);
+                    const matchesOccupancy = !selectedOccupancy || occupancy.includes(selectedOccupancy);
+
+                    card.style.display = matchesSearch && matchesType && matchesPrice && matchesOccupancy ? 'block' : 'none';
+                });
+            }
+
+            function checkPriceRange(price, range) {
+                const [min, max] = range.split('-').map(Number);
+                if (max) {
+                    return price >= min && price <= max;
+                } else {
+                    return price >= min;
+                }
+            }
+
+            searchInput.addEventListener('input', filterRooms);
+            roomTypeSelect.addEventListener('change', filterRooms);
+            priceRangeSelect.addEventListener('change', filterRooms);
+            occupancySelect.addEventListener('change', filterRooms);
+        </script>
+
+        <style>
+            .book-now-btn {
+                display: inline-block;
+                padding: 1rem 2rem;
+                background-color: #2c3e50;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                text-align: center;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .book-now-btn:hover {
+                background-color: #34495e;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+        </style>
+    </body>
+</html>

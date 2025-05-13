@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Events - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/experiences.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'events' }) %>
+
+        <main class="events-container">
+            <div class="hero-section" data-aos="fade">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Events & Celebrations" />
+                <div class="overlay"></div>
+                <div class="content">
+                    <h1 data-aos="fade-up" data-aos-delay="200">Events & Celebrations</h1>
+                    <div class="hero-line"></div>
+                    <p data-aos="fade-up" data-aos-delay="400">Create unforgettable moments in our elegant venues</p>
+                </div>
+            </div>
+
+            <section class="events-content">
+                <div class="venues-grid">
+                    <div class="venue-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Grand Ballroom">
+                        <div class="venue-info">
+                            <h3>Grand Ballroom</h3>
+                            <p class="capacity">Up to 500 guests</p>
+                            <p class="description">Perfect for large weddings and corporate events.</p>
+                            <div class="features">
+                                <span><i class="fas fa-glass-cheers"></i> Full Service</span>
+                                <span><i class="fas fa-music"></i> Stage & Sound</span>
+                                <span><i class="fas fa-utensils"></i> Catering</span>
+                            </div>
+                            <button class="btn-primary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="venue-card" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://plus.unsplash.com/premium_photo-1663091646708-d291341db639?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Garden Terrace">
+                        <div class="venue-info">
+                            <h3>Garden Terrace</h3>
+                            <p class="capacity">Up to 200 guests</p>
+                            <p class="description">Outdoor venue with stunning city views.</p>
+                            <div class="features">
+                                <span><i class="fas fa-umbrella-beach"></i> Outdoor Space</span>
+                                <span><i class="fas fa-camera"></i> Photo Spots</span>
+                                <span><i class="fas fa-leaf"></i> Landscaped</span>
+                            </div>
+                            <button class="btn-primary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="venue-card" data-aos="fade-up" data-aos-delay="600">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Executive Meeting Room">
+                        <div class="venue-info">
+                            <h3>Executive Meeting Room</h3>
+                            <p class="capacity">Up to 50 guests</p>
+                            <p class="description">Professional setting for business meetings.</p>
+                            <div class="features">
+                                <span><i class="fas fa-wifi"></i> High-Speed WiFi</span>
+                                <span><i class="fas fa-project-diagram"></i> AV Equipment</span>
+                                <span><i class="fas fa-coffee"></i> Refreshments</span>
+                            </div>
+                            <button class="btn-primary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-packages" data-aos="fade-up">
+                    <h2>Event Packages</h2>
+                    <div class="packages-grid">
+                        <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding Package">
+                            <div class="package-info">
+                                <h3>Wedding Package</h3>
+                                <p>Complete wedding planning and execution</p>
+                                <ul>
+                                    <li>Venue Selection</li>
+                                    <li>Catering Service</li>
+                                    <li>Decoration</li>
+                                    <li>Photography</li>
+                                </ul>
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="package-card" data-aos="fade-up" data-aos-delay="400">
+                            <img src="https://plus.unsplash.com/premium_photo-1661962360690-e91cc0df88f1?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Corporate Package">
+                            <div class="package-info">
+                                <h3>Corporate Package</h3>
+                                <p>Professional business event solutions</p>
+                                <ul>
+                                    <li>Meeting Rooms</li>
+                                    <li>Technical Support</li>
+                                    <li>Catering Options</li>
+                                    <li>Team Building</li>
+                                </ul>
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+        </script>
+        <script src="/js/script.js"></script>
+    </body>
+</html>

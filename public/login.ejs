@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <style>
+            .login-container {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                            url('https://plus.unsplash.com/premium_photo-1728591903375-b73c2adb5f29?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bG9naW4lMjBwYWdlJTIwb2YlMjBIb3RlbCUyMHdlYnNpdGV8ZW58MHx8MHx8fDA%3D');
+                background-size: cover;
+                background-position: center;
+                padding: 2rem;
+            }
+
+            .login-form {
+                background: rgba(255, 255, 255, 0.95);
+                padding: 3rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                max-width: 500px;
+                backdrop-filter: blur(10px);
+            }
+
+            .login-form h2 {
+                text-align: center;
+                color: var(--primary-color);
+                margin-bottom: 2rem;
+                font-size: 2.5rem;
+                font-weight: 700;
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: var(--text-dark);
+                font-weight: 500;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 1rem;
+                border: 2px solid #eee;
+                border-radius: 8px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+            .form-group input:focus {
+                outline: none;
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+            }
+
+            .form-group .input-icon {
+                position: relative;
+            }
+
+            .form-group .input-icon i {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #999;
+                transition: color 0.3s ease;
+            }
+
+            .form-group .input-icon input {
+                padding-left: 3rem;
+            }
+
+            .form-group .input-icon input:focus + i {
+                color: var(--primary-color);
+            }
+
+            .remember-forgot {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .remember-me {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .remember-me input[type="checkbox"] {
+                width: 18px;
+                height: 18px;
+                accent-color: var(--primary-color);
+            }
+
+            .forgot-password {
+                color: var(--primary-color);
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: color 0.3s ease;
+            }
+
+            .forgot-password:hover {
+                color: var(--primary-dark);
+            }
+
+            .login-btn {
+                width: 100%;
+                padding: 1rem;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .login-btn:hover {
+                background: var(--primary-dark);
+                transform: translateY(-2px);
+            }
+
+            .register-link {
+                text-align: center;
+                margin-top: 2rem;
+                color: var(--text-light);
+            }
+
+            .register-link a {
+                color: var(--primary-color);
+                text-decoration: none;
+                font-weight: 600;
+                transition: color 0.3s ease;
+            }
+
+            .register-link a:hover {
+                color: var(--primary-dark);
+            }
+
+            @media (max-width: 768px) {
+                .login-form {
+                    padding: 2rem;
+                }
+
+                .login-form h2 {
+                    font-size: 2rem;
+                }
+            }
+
+            .notification {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                border-radius: 5px;
+                color: white;
+                font-weight: 500;
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+            }
+
+            .notification.success {
+                background-color: #28a745;
+            }
+
+            .notification.error {
+                background-color: #dc3545;
+            }
+
+            .notification.info {
+                background-color: #17a2b8;
+            }
+
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            button[type="submit"] {
+                position: relative;
+                min-width: 120px;
+            }
+
+            button[type="submit"] i {
+                margin-right: 8px;
+            }
+
+            button[type="submit"]:disabled {
+                opacity: 0.8;
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'login' }) %>
+
+        <main class="login-container">
+            <form class="login-form" data-aos="fade-up" data-aos-duration="800" id="loginForm">
+                <h2>Welcome Back</h2>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-icon">
+                        <input type="email" id="email" name="email" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-icon">
+                        <input type="password" id="password" name="password" required>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <div class="remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <p class="register-link">
+                    Don't have an account? <a href="/register">Register</a>
+                </p>
+            </form>
+        </main>
+
+        <%- include('partials/footer') %>
+        <script src="/js/script.js"></script>
+        <script src="/js/login.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+        </script>
+        <script>
+            document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+
+                const formData = {
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value
+                };
+
+                try {
+                    const response = await fetch('/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        showNotification('Login successful! Redirecting...', 'success');
+                        // Redirect to dashboard after a short delay
+                        setTimeout(() => {
+                            window.location.href = '/dashboard';
+                        }, 1000);
+                    } else {
+                        showNotification(data.message || 'Login failed. Please try again.', 'error');
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = 'Login';
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showNotification('An error occurred. Please try again later.', 'error');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = 'Login';
+                }
+            });
+
+            function showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                // Remove notification after 5 seconds
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            }
+        </script>
+    </body>
+</html>

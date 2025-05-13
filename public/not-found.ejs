@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Page Not Found - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/not-found.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    </head>
+    <body>
+        <%- include('partials/nav') %>
+        
+        <main class="not-found-page">
+            <div class="stars"></div>
+            <div class="stars2"></div>
+            <div class="stars3"></div>
+            
+            <div class="error-container">
+                <div class="error-content fade-in">
+                    <div class="error-code">
+                        <div class="number">4</div>
+                        <div class="error-circle pulse">
+                            <i class="fas fa-compass fa-spin"></i>
+                        </div>
+                        <div class="number">4</div>
+                    </div>
+                    <h1 class="slide-up">Lost in Luxury</h1>
+                    <p class="fade-in-delay">The page you're looking for seems to have wandered off to explore our other luxurious destinations.</p>
+                    
+                    <div class="action-buttons slide-up-delay">
+                        <a href="/" class="btn btn-primary">
+                            <i class="fas fa-home"></i>
+                            Return to Homepage
+                        </a>
+                        <a href="/contact" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i>
+                            Contact Support
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="suggestions fade-in-delay-2">
+                    <h2>While you're here, why not explore?</h2>
+                    <div class="suggestion-cards">
+                        <a href="/hotels" class="suggestion-card hover-float">
+                            <div class="card-icon">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                            <h3>Our Hotels</h3>
+                            <p>Discover our collection of luxury accommodations</p>
+                            <span class="card-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a>
+                        <a href="/rooms" class="suggestion-card hover-float">
+                            <div class="card-icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <h3>Rooms & Suites</h3>
+                            <p>Find your perfect stay</p>
+                            <span class="card-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a>
+                        <a href="/experiences" class="suggestion-card hover-float">
+                            <div class="card-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3>Experiences</h3>
+                            <p>Create unforgettable memories</p>
+                            <span class="card-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <%- include('partials/footer') %>
+    </body>
+</html>

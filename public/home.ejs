@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'home' }) %>
+        <main>
+            <section class="hero">
+                <div class="hero-slider">
+                    <% slides.forEach((slide, index) => { %>
+                        <div class="slide <%= index === 0 ? 'active' : '' %>"
+                            style="background-image: url('<%= slide.image %>');">
+                            <div class="hero-content">
+                                <h1 class="hero-title"><%= slide.title %></h1>
+                                <p class="hero-text"><%= slide.description %></p>
+                                <a href="/hotels" class="btn btn-primary">Explore Our Hotels</a>
+                            </div>
+                        </div>
+                    <% }) %>
+                    <button class="slider-prev" aria-label="Previous slide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-next" aria-label="Next slide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="slider-indicators">
+                        <% slides.forEach((_, index) => { %>
+                            <button class="slider-indicator <%= index === 0 ? 'active' : '' %>" 
+                                    data-slide="<%= index %>" 
+                                    aria-label="Go to slide <%= index + 1 %>">
+                            </button>
+                        <% }) %>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="booking-widget">
+                        <h2 class="text-center mb-4">Book Your Stay</h2>
+                        <form id="booking-form" class="grid grid-4">
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <select id="location" class="form-control" required>
+                                    <option value="">Select a location</option>
+                                    <% locations.forEach(location => { %>
+                                        <option value="<%= location.value %>"><%= location.label %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="check-in">Check-in Date</label>
+                                <input type="date" id="check-in" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="check-out">Check-out Date</label>
+                                <input type="date" id="check-out" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="guests">Guests</label>
+                                <input type="number" id="guests" class="form-control" min="1" max="10" value="2" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                    <span>Search</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Search Results Section -->
+                    <div id="search-results" class="mt-5" style="display: none;">
+                        <h3 class="text-center mb-4">Available Rooms</h3>
+                        <div id="rooms-grid" class="grid grid-3 gap-4">
+                            <!-- Room cards will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section bg-light">
+                <div class="container">
+                    <h2 class="text-center mb-4">Featured Hotels</h2>
+                    <div class="grid grid-3">
+                        <% featuredHotels.forEach(hotel => { %>
+                            <div class="card">
+                                <img src="<%= hotel.image %>" alt="<%= hotel.name %>" class="card-img" />
+                                <div class="card-body">
+                                    <div class="rating mb-2"><%= hotel.rating %></div>
+                                    <h3 class="card-title"><%= hotel.name %></h3>
+                                    <p class="card-text"><%= hotel.location %></p>
+                                    <div class="price mb-3"><%= hotel.price %></div>
+                                    <a href="/hotels?id=<%= hotel.id %>" class="btn btn-secondary">View Details</a>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="/hotels" class="btn btn-primary">View All Hotels</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="grid grid-2">
+                        <div>
+                            <h2 class="mb-4">Experience Luxury</h2>
+                            <p class="mb-4">Take a virtual journey through our flagship properties and discover the epitome of luxury hospitality. Our commitment to excellence ensures an unforgettable stay.</p>
+                            <div class="feature-item mb-4">
+                                <div class="icon-circle">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div>
+                                    <h3>Flexible Booking</h3>
+                                    <p>Free cancellation up to 24 hours before check-in</p>
+                                </div>
+                            </div>
+                            <div class="feature-item mb-4">
+                                <div class="icon-circle">
+                                    <i class="fas fa-concierge-bell"></i>
+                                </div>
+                                <div>
+                                    <h3>24/7 Concierge</h3>
+                                    <p>Round-the-clock service to meet all your needs</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="weather-icon">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold">72°F</span>
+                                    <span>Sunny in New York</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                    title="Hotel Tour" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section bg-light">
+                <div class="container">
+                    <h2 class="text-center mb-4">What Our Guests Say</h2>
+                    <p class="text-center mb-5">Discover why travelers choose LuxeStay Hotels for their perfect getaway</p>
+                    <div class="grid grid-3">
+                        <% testimonials.forEach(testimonial => { %>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="rating mb-2">
+                                        <% for(let i = 0; i < 5; i++) { %>
+                                            <i class="fas fa-star"></i>
+                                        <% } %>
+                                    </div>
+                                    <p class="card-text"><%= testimonial.text %></p>
+                                    <p class="text-primary">- <%= testimonial.author %></p>
+                                </div>
+                            </div>
+                        <% }) %>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="rating mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="card-text">"The spa services were absolutely incredible! The therapists were professional and the facilities were pristine. The couples massage package was worth every penny. We left feeling completely rejuvenated."</p>
+                                <p class="text-primary">- Sarah & Michael Thompson</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="rating mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p class="card-text">"As a business traveler, I appreciate the attention to detail. The executive lounge was perfect for meetings, and the high-speed internet never failed. The room service was prompt and the food was excellent."</p>
+                                <p class="text-primary">- James Wilson, Business Executive</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-4">Explore Nearby Attractions</h2>
+                    <p class="text-center mb-5">Discover the best experiences around our hotels</p>
+                    <div class="grid grid-2">
+                        <div class="attractions-list">
+                            <h3 class="mb-3">New York Attractions</h3>
+                            <ul class="list-unstyled">
+                                <% attractions.forEach(attraction => { %>
+                                    <li>
+                                        <span><i class="fas fa-map-marker-alt"></i> <%= attraction.name %></span>
+                                        <span class="text-primary"><i class="fas fa-walking"></i> <%= attraction.distance %></span>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                            <button class="btn btn-primary" onclick="window.open('https://www.google.com/maps/search/attractions+near+new+york', '_blank')">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>View All Nearby Attractions</span>
+                            </button>
+                        </div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256349542!2d-73.98329492426285!3d40.75903097138801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1710284283131!5m2!1sen!2sus" 
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    title="Map of New York Attractions">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section bg-primary text-white">
+                <div class="container">
+                    <h2 class="text-center mb-4">Subscribe to Our Newsletter</h2>
+                    <p class="text-center mb-4">Stay updated with exclusive offers, travel tips, and news from LuxeStay Hotels.</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your email address" required />
+                        </div>
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Subscribe</span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <script src="/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const bookingForm = document.getElementById('booking-form');
+                const searchResults = document.getElementById('search-results');
+                const roomsGrid = document.getElementById('rooms-grid');
+
+                // Set minimum dates for check-in and check-out
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('check-in').min = today;
+                document.getElementById('check-out').min = today;
+
+                // Update check-out min date when check-in is selected
+                document.getElementById('check-in').addEventListener('change', function() {
+                    document.getElementById('check-out').min = this.value;
+                });
+
+                // Handle form submission
+                bookingForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
+                    const location = document.getElementById('location').value;
+                    const checkIn = document.getElementById('check-in').value;
+                    const checkOut = document.getElementById('check-out').value;
+                    const guests = document.getElementById('guests').value;
+
+                    // Validate form
+                    if (!location || !checkIn || !checkOut || !guests) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+
+                    // Validate dates
+                    if (new Date(checkIn) >= new Date(checkOut)) {
+                        alert('Check-out date must be after check-in date');
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch('/api/search-rooms', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                location,
+                                checkIn,
+                                checkOut,
+                                guests: parseInt(guests)
+                            })
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            // Display results
+                            searchResults.style.display = 'block';
+                            roomsGrid.innerHTML = '';
+
+                            if (data.rooms.length === 0) {
+                                roomsGrid.innerHTML = `
+                                    <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                                        <i class="fas fa-search fa-3x" style="color: #ddd; margin-bottom: 1rem;"></i>
+                                        <h3>No Rooms Found</h3>
+                                        <p>We couldn't find any rooms matching your criteria.</p>
+                                        <p>Try adjusting your search parameters or check back later.</p>
+                                    </div>
+                                `;
+                                return;
+                            }
+
+                            data.rooms.forEach(room => {
+                                const roomCard = `
+                                    <div class="card" data-aos="fade-up">
+                                        <img src="${room.image}" alt="${room.name}" class="card-img" />
+                                        <div class="card-body">
+                                            <h3 class="card-title">${room.name}</h3>
+                                            <p class="card-text">${room.description}</p>
+                                            <div class="room-features" style="margin: 1rem 0;">
+                                                <span class="feature"><i class="fas fa-bed"></i> ${room.bedType}</span>
+                                                <span class="feature"><i class="fas fa-users"></i> Up to ${room.maxGuests} guests</span>
+                                                <span class="feature"><i class="fas fa-ruler-combined"></i> ${room.size}m²</span>
+                                            </div>
+                                            <div class="price mb-3">$${room.price} per night</div>
+                                            <a href="/booking/${room.location}?room=${encodeURIComponent(room.name)}" class="btn btn-primary">
+                                                <i class="fas fa-calendar-check"></i> Book Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                `;
+                                roomsGrid.innerHTML += roomCard;
+                            });
+
+                            // Scroll to results
+                            searchResults.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            alert(data.message || 'Error searching rooms');
+                        }
+                    } catch (error) {
+                        console.error('Search error:', error);
+                        alert('An error occurred while searching for rooms. Please try again.');
+                    }
+                });
+            });
+        </script>
+        <style>
+            .room-features {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+                margin: 1rem 0;
+            }
+
+            .feature {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            .feature i {
+                color: #3498db;
+            }
+
+            .no-results {
+                text-align: center;
+                padding: 3rem;
+                background: #f8f9fa;
+                border-radius: 10px;
+            }
+
+            .no-results i {
+                font-size: 3rem;
+                color: #ddd;
+                margin-bottom: 1rem;
+            }
+
+            .no-results h3 {
+                color: #333;
+                margin-bottom: 0.5rem;
+            }
+
+            .no-results p {
+                color: #666;
+                margin-bottom: 0.5rem;
+            }
+        </style>
+    </body>
+</html>
