@@ -1,19 +1,17 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/users');
-const { sendEmail } = require('../utils/emailService');
 
 const SECRET_KEY = process.env.JWT_SECRET || 'your-secret-key';
-const REFRESH_SECRET_KEY = process.env.JWT_REFRESH_SECRET || 'your-refresh-secret-key';
 
 // Register User
 const registerUser = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { firstName, lastName, email, password } = req.body;
 
-        if (!username || !email || !password) {
+        if (!firstName || !lastName || !email || !password) {
             return res.status(400).json({ 
                 success: false,
-                message: 'Username, email and password are required' 
+                message: 'First name, last name, email and password are required' 
             });
         }
 
@@ -28,7 +26,8 @@ const registerUser = async (req, res) => {
 
         // Create new user with plain text password
         const newUser = new User({
-            username,
+            firstName,
+            lastName,
             email,
             password, // Store password in plain text
             isVerified: false
@@ -37,22 +36,9 @@ const registerUser = async (req, res) => {
         await newUser.save();
 
         // Generate verification token
-        const verificationToken = jwt.sign(
-            { userId: newUser._id },
-            SECRET_KEY,
-            { expiresIn: '24h' }
-        );
-
-        // Send verification email
-        await sendEmail({
-            to: email,
-            subject: 'Verify your email',
-            html: `Click <a href="${process.env.BASE_URL}/verify-email?token=${verificationToken}">here</a> to verify your email.`
-        });
-
         res.status(201).json({
             success: true,
-            message: 'User registered successfully. Please check your email for verification.'
+            message: 'User registered successfully.'
         });
     } catch (error) {
         console.error('Registration error:', error);
@@ -107,27 +93,7 @@ const loginUser = async (req, res) => {
             { expiresIn: '15m' }
         );
 
-        const refreshToken = jwt.sign(
-            { userId: user._id },
-            REFRESH_SECRET_KEY,
-            { expiresIn: '7d' }
-        );
-
         // Save refresh token to user
-        user.refreshToken = refreshToken;
-        await user.save();
-
-        res.json({
-            success: true,
-            accessToken,
-            refreshToken,
-            user: {
-                id: user._id,
-                username: user.username,
-                email: user.email,
-                role: user.role
-            }
-        });
     } catch (error) {
         console.error('Login error:', error);
         res.status(500).json({
@@ -163,47 +129,6 @@ const logoutUser = async (req, res) => {
     }
 };
 
-// Refresh Token
-const refreshToken = async (req, res) => {
-    try {
-        const { refreshToken } = req.body;
-
-        if (!refreshToken) {
-            return res.status(400).json({
-                success: false,
-                message: 'Refresh token is required'
-            });
-        }
-
-        const decoded = jwt.verify(refreshToken, REFRESH_SECRET_KEY);
-        const user = await User.findById(decoded.userId);
-
-        if (!user || user.refreshToken !== refreshToken) {
-            return res.status(401).json({
-                success: false,
-                message: 'Invalid refresh token'
-            });
-        }
-
-        const accessToken = jwt.sign(
-            { userId: user._id, role: user.role },
-            SECRET_KEY,
-            { expiresIn: '15m' }
-        );
-
-        res.json({
-            success: true,
-            accessToken
-        });
-    } catch (error) {
-        console.error('Token refresh error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Error refreshing token',
-            error: process.env.NODE_ENV === 'development' ? error.message : undefined
-        });
-    }
-};
 
 // Forgot Password
 const forgotPassword = async (req, res) => {
@@ -284,98 +209,11 @@ const resetPassword = async (req, res) => {
     }
 };
 
-// Verify Email
-const verifyEmail = async (req, res) => {
-    try {
-        const { token } = req.body;
-
-        if (!token) {
-            return res.status(400).json({
-                success: false,
-                message: 'Token is required'
-            });
-        }
-
-        const decoded = jwt.verify(token, SECRET_KEY);
-        const user = await User.findById(decoded.userId);
-
-    if (!user) {
-            return res.status(404).json({
-                success: false,
-                message: 'User not found'
-            });
-        }
-
-        user.isVerified = true;
-        await user.save();
-
-        res.json({
-            success: true,
-            message: 'Email verified successfully'
-        });
-    } catch (error) {
-        console.error('Email verification error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Error verifying email',
-            error: process.env.NODE_ENV === 'development' ? error.message : undefined
-        });
-    }
-};
-
-// Resend Verification Email
-const resendVerificationEmail = async (req, res) => {
-    try {
-        const { email } = req.body;
-
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                message: 'User not found'
-            });
-        }
-
-        if (user.isVerified) {
-            return res.status(400).json({
-                success: false,
-                message: 'Email already verified'
-            });
-        }
-
-        const verificationToken = jwt.sign(
-            { userId: user._id },
-            SECRET_KEY,
-            { expiresIn: '24h' }
-        );
-
-        await sendEmail({
-            to: email,
-            subject: 'Verify your email',
-            html: `Click <a href="${process.env.BASE_URL}/verify-email?token=${verificationToken}">here</a> to verify your email.`
-        });
-
-        res.json({
-            success: true,
-            message: 'Verification email sent'
-        });
-    } catch (error) {
-        console.error('Resend verification error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Error resending verification email',
-            error: process.env.NODE_ENV === 'development' ? error.message : undefined
-        });
-    }
-};
 
 module.exports = {
     registerUser,
     loginUser,
     logoutUser,
-    refreshToken,
     forgotPassword,
     resetPassword,
-    verifyEmail,
-    resendVerificationEmail
 };
