@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact Us - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/about-contact.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'contact' }) %>
+
+        <main class="contact-container">
+            <div class="hero-section">
+                <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Contact Us" />
+                <div class="overlay"></div>
+                <div class="content">
+                    <h1>Contact Us</h1>
+                    <div class="hero-line"></div>
+                    <p>Get in touch with our dedicated team</p>
+                </div>
+            </div>
+
+            <section class="contact-content">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Address</h3>
+                        <p>123 Luxury Avenue<br>New York, NY 10001<br>United States</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@luxestay.com<br>reservations@luxestay.com</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Hours</h3>
+                        <p>Monday - Friday: 9am - 6pm<br>Saturday: 10am - 4pm<br>Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="map-section">
+                <h2>Find Us</h2>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1647043429265!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </section>
+        </main>
+
+        <!-- Contact Form Confirmation Modal -->
+        <div id="contactModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirm Your Message</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="confirmation-details">
+                        <p><strong>Name:</strong> <span id="confirmName"></span></p>
+                        <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+                        <p><strong>Phone:</strong> <span id="confirmPhone"></span></p>
+                        <p><strong>Subject:</strong> <span id="confirmSubject"></span></p>
+                        <p><strong>Message:</strong> <span id="confirmMessage"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary close-modal">Edit</button>
+                    <button type="button" class="btn-primary" id="confirmSubmit">Send Message</button>
+                </div>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+        <script src="/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const contactForm = document.getElementById('contactForm');
+                const contactModal = document.getElementById('contactModal');
+                const closeButtons = document.querySelectorAll('.close-modal');
+                const confirmSubmit = document.getElementById('confirmSubmit');
+                
+                if (contactForm) {
+                    contactForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        // Get form values
+                        const formData = {
+                            name: document.getElementById('name').value,
+                            email: document.getElementById('email').value,
+                            phone: document.getElementById('phone').value,
+                            subject: document.getElementById('subject').value,
+                            message: document.getElementById('message').value
+                        };
+
+                        // Validate required fields
+                        if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                            showNotification('Please fill in all required fields', 'error', 'Validation Error');
+                            return;
+                        }
+
+                        // Populate confirmation modal
+                        document.getElementById('confirmName').textContent = formData.name;
+                        document.getElementById('confirmEmail').textContent = formData.email;
+                        document.getElementById('confirmPhone').textContent = formData.phone || 'Not provided';
+                        document.getElementById('confirmSubject').textContent = formData.subject;
+                        document.getElementById('confirmMessage').textContent = formData.message;
+
+                        // Show modal
+                        contactModal.style.display = 'block';
+                    });
+                }
+
+                // Close modal when clicking close buttons
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        contactModal.style.display = 'none';
+                    });
+                });
+
+                // Close modal when clicking outside
+                window.addEventListener('click', (e) => {
+                    if (e.target === contactModal) {
+                        contactModal.style.display = 'none';
+                    }
+                });
+
+                // Handle form submission
+                confirmSubmit.addEventListener('click', async function() {
+                    const formData = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        subject: document.getElementById('subject').value,
+                        message: document.getElementById('message').value
+                    };
+
+                    // Disable submit button and show loading state
+                    const submitButton = this;
+                    const originalButtonText = submitButton.textContent;
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                    try {
+                        const response = await fetch('/api/contact', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                        });
+
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            showNotification(
+                                'Thank you for your message! We will get back to you soon.',
+                                'success',
+                                'Message Sent!'
+                            );
+                            contactForm.reset();
+                            contactModal.style.display = 'none';
+                        } else {
+                            showNotification(
+                                data.message || 'Failed to send message. Please try again.',
+                                'error',
+                                'Error'
+                            );
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        showNotification(
+                            'An unexpected error occurred. Please try again later.',
+                            'error',
+                            'Error'
+                        );
+                    } finally {
+                        // Re-enable submit button
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                    }
+                });
+
+                // Enhanced notification function
+                function showNotification(message, type = 'info', title = '') {
+                    // Remove any existing notifications
+                    const existingNotifications = document.querySelectorAll('.notification');
+                    existingNotifications.forEach(notification => {
+                        notification.remove();
+                    });
+
+                    const notification = document.createElement('div');
+                    notification.className = `notification ${type}`;
+
+                    // Set icon based on type
+                    let icon = '';
+                    switch(type) {
+                        case 'success':
+                            icon = 'fas fa-check-circle';
+                            title = title || 'Success!';
+                            break;
+                        case 'error':
+                            icon = 'fas fa-exclamation-circle';
+                            title = title || 'Error!';
+                            break;
+                        case 'warning':
+                            icon = 'fas fa-exclamation-triangle';
+                            title = title || 'Warning!';
+                            break;
+                        default:
+                            icon = 'fas fa-info-circle';
+                            title = title || 'Information';
+                    }
+
+                    notification.innerHTML = `
+                        <i class="${icon}"></i>
+                        <div class="notification-content">
+                            ${title ? `<div class="notification-title">${title}</div>` : ''}
+                            <div class="notification-message">${message}</div>
+                        </div>
+                        <div class="notification-close">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    `;
+
+                    document.body.appendChild(notification);
+
+                    // Add click event to close button
+                    const closeButton = notification.querySelector('.notification-close');
+                    closeButton.addEventListener('click', () => {
+                        notification.style.animation = 'slideOut 0.3s ease-out forwards';
+                        setTimeout(() => notification.remove(), 300);
+                    });
+
+                    // Auto remove after 5 seconds
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.style.animation = 'slideOut 0.3s ease-out forwards';
+                            setTimeout(() => notification.remove(), 300);
+                        }
+                    }, 5000);
+                }
+            });
+        </script>
+
+        <style>
+            /* Notification Styles */
+            .notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1.25rem 2rem;
+                border-radius: 10px;
+                color: white;
+                font-weight: 500;
+                z-index: 1100;
+                animation: slideIn 0.3s ease-out;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                max-width: 400px;
+            }
+
+            .notification i {
+                font-size: 1.25rem;
+            }
+
+            .notification.success {
+                background-color: #2ecc71;
+                border-left: 4px solid #27ae60;
+            }
+
+            .notification.error {
+                background-color: #e74c3c;
+                border-left: 4px solid #c0392b;
+            }
+
+            .notification.warning {
+                background-color: #f1c40f;
+                border-left: 4px solid #f39c12;
+                color: #2c3e50;
+            }
+
+            .notification.info {
+                background-color: #3498db;
+                border-left: 4px solid #2980b9;
+            }
+
+            .notification-content {
+                flex: 1;
+            }
+
+            .notification-title {
+                font-weight: 600;
+                margin-bottom: 0.25rem;
+            }
+
+            .notification-message {
+                font-size: 0.95rem;
+                opacity: 0.9;
+            }
+
+            .notification-close {
+                cursor: pointer;
+                padding: 0.25rem;
+                opacity: 0.7;
+                transition: opacity 0.3s ease;
+            }
+
+            .notification-close:hover {
+                opacity: 1;
+            }
+
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+
+            /* Form Styles */
+            .form-group.error input,
+            .form-group.error textarea {
+                border-color: #e74c3c;
+                background-color: #fff5f5;
+            }
+
+            .form-group.error .error-message {
+                color: #e74c3c;
+                font-size: 0.875rem;
+                margin-top: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .form-group.error .error-message i {
+                font-size: 1rem;
+            }
+
+            button[type="submit"] {
+                position: relative;
+            }
+
+            button[type="submit"] i {
+                margin-right: 0.5rem;
+            }
+
+            /* Modal Styles */
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+            }
+
+            .modal-content {
+                position: relative;
+                background-color: #fff;
+                margin: 5% auto;
+                padding: 0;
+                width: 90%;
+                max-width: 600px;
+                border-radius: 10px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+                animation: modalSlideIn 0.3s ease-out;
+            }
+
+            .modal-header {
+                padding: 1.5rem;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .modal-header h3 {
+                margin: 0;
+                color: #2c3e50;
+                font-size: 1.5rem;
+            }
+
+            .close-modal {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: #666;
+                cursor: pointer;
+                padding: 0.5rem;
+                transition: color 0.3s ease;
+            }
+
+            .close-modal:hover {
+                color: #e74c3c;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-footer {
+                padding: 1.5rem;
+                border-top: 1px solid #eee;
+                display: flex;
+                justify-content: flex-end;
+                gap: 1rem;
+            }
+
+            .confirmation-details {
+                background-color: #f8f9fa;
+                padding: 1.5rem;
+                border-radius: 8px;
+            }
+
+            .confirmation-details p {
+                margin: 0.75rem 0;
+                line-height: 1.5;
+            }
+
+            .confirmation-details strong {
+                color: #2c3e50;
+                display: inline-block;
+                width: 80px;
+            }
+
+            @keyframes modalSlideIn {
+                from {
+                    transform: translateY(-20px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        </style>
+    </body>
+</html>

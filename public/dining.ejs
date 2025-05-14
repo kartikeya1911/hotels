@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dining - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/experiences.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'dining' }) %>
+
+        <main class="dining-container">
+            <div class="hero-section" data-aos="fade">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Dining Experience" />
+                <div class="overlay"></div>
+                <div class="content">
+                    <h1 data-aos="fade-up" data-aos-delay="200">Dining Experience</h1>
+                    <div class="hero-line"></div>
+                    <p data-aos="fade-up" data-aos-delay="400">Indulge in culinary excellence</p>
+                </div>
+            </div>
+
+            <section class="dining-content">
+                <div class="restaurants-grid">
+                    <div class="restaurant-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fine Dining Restaurant">
+                        <div class="restaurant-info">
+                            <h3>Fine Dining Restaurant</h3>
+                            <p class="cuisine">International Cuisine</p>
+                            <p class="description">Experience the finest international dishes prepared by our award-winning chefs.</p>
+                            <div class="features">
+                                <span><i class="fas fa-wine-glass-alt"></i> Wine Cellar</span>
+                                <span><i class="fas fa-moon"></i> Dinner Service</span>
+                                <span><i class="fas fa-star"></i> Michelin Rated</span>
+                            </div>
+                            <button class="btn-primary">Make Reservation</button>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-card" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casual Dining">
+                        <div class="restaurant-info">
+                            <h3>Casual Dining</h3>
+                            <p class="cuisine">Contemporary Fusion</p>
+                            <p class="description">Relaxed atmosphere with a modern twist on classic dishes.</p>
+                            <div class="features">
+                                <span><i class="fas fa-utensils"></i> All-Day Dining</span>
+                                <span><i class="fas fa-cocktail"></i> Bar Service</span>
+                                <span><i class="fas fa-umbrella-beach"></i> Outdoor Seating</span>
+                            </div>
+                            <button class="btn-primary">Make Reservation</button>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-card" data-aos="fade-up" data-aos-delay="600">
+                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rooftop Bar">
+                        <div class="restaurant-info">
+                            <h3>Rooftop Bar</h3>
+                            <p class="cuisine">Cocktails & Light Bites</p>
+                            <p class="description">Enjoy stunning views with craft cocktails and gourmet snacks.</p>
+                            <div class="features">
+                                <span><i class="fas fa-cocktail"></i> Craft Cocktails</span>
+                                <span><i class="fas fa-music"></i> Live Music</span>
+                                <span><i class="fas fa-sun"></i> Sunset Views</span>
+                            </div>
+                            <button class="btn-primary">Make Reservation</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="special-offers" data-aos="fade-up">
+                    <h2>Special Offers</h2>
+                    <div class="offers-grid">
+                        <div class="offer-card" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sunday Brunch">
+                            <div class="offer-info">
+                                <h3>Sunday Brunch</h3>
+                                <p>Enjoy our lavish Sunday brunch with live cooking stations and free-flowing beverages.</p>
+                                <button class="btn-secondary">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="offer-card" data-aos="fade-up" data-aos-delay="400">
+                            <img src="https://images.unsplash.com/photo-1558670460-cad0c19b1840?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wine Tasting">
+                            <div class="offer-info">
+                                <h3>Wine Tasting</h3>
+                                <p>Join our sommelier for an evening of fine wines and perfectly paired appetizers.</p>
+                                <button class="btn-secondary">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+        </script>
+        <script src="/js/script.js"></script>
+    </body>
+</html>

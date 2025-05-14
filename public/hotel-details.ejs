@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= hotel.name %> - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <style>
+            .hotel-details-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            .hotel-header {
+                position: relative;
+                height: 500px;
+                margin-bottom: 2rem;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            .hotel-header img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .hotel-header-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 2rem;
+                background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+                color: white;
+            }
+
+            .hotel-header-overlay h1 {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .hotel-header-overlay .location {
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .hotel-content {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 2rem;
+            }
+
+            .hotel-main {
+                background: white;
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .hotel-sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hotel-info-card {
+                background: white;
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .hotel-info-card h3 {
+                margin-bottom: 1rem;
+                color: #333;
+            }
+
+            .amenities-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .amenity-item {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                background: #f8f9fa;
+                border-radius: 5px;
+            }
+
+            .room-list {
+                display: grid;
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .room-card {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+                background: #f8f9fa;
+                border-radius: 10px;
+            }
+
+            .room-image {
+                width: 100%;
+                height: 200px;
+                border-radius: 5px;
+                overflow: hidden;
+            }
+
+            .room-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .room-details h4 {
+                margin-bottom: 0.5rem;
+                color: #333;
+            }
+
+            .room-features {
+                display: flex;
+                gap: 1rem;
+                margin: 1rem 0;
+                flex-wrap: wrap;
+            }
+
+            .room-feature {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            .room-price {
+                font-size: 1.5rem;
+                color: #2c3e50;
+                margin: 1rem 0;
+            }
+
+            .booking-actions {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                border-radius: 5px;
+                font-weight: 600;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.3s ease;
+            }
+
+            .btn-primary {
+                background: #2c3e50;
+                color: white;
+            }
+
+            .btn-primary:hover {
+                background: #34495e;
+            }
+
+            .btn-secondary {
+                background: #3498db;
+                color: white;
+            }
+
+            .btn-secondary:hover {
+                background: #2980b9;
+            }
+
+            @media (max-width: 768px) {
+                .hotel-content {
+                    grid-template-columns: 1fr;
+                }
+
+                .room-card {
+                    grid-template-columns: 1fr;
+                }
+
+                .room-image {
+                    height: 250px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'hotels' }) %>
+
+        <main class="hotel-details-container">
+            <div class="hotel-header">
+                <img src="<%= hotel.image %>" alt="<%= hotel.name %>">
+                <div class="hotel-header-overlay">
+                    <h1><%= hotel.name %></h1>
+                    <p class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <%= hotel.location %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="hotel-content">
+                <div class="hotel-main">
+                    <section class="hotel-description">
+                        <h2>About the Hotel</h2>
+                        <p><%= hotel.description %></p>
+                    </section>
+
+                    <section class="hotel-rooms">
+                        <h2>Available Rooms</h2>
+                        <div class="room-list">
+                            <% hotel.rooms.forEach(room => { %>
+                                <div class="room-card" data-aos="fade-up">
+                                    <div class="room-image">
+                                        <img src="<%= hotel.image %>" alt="<%= room.name %>">
+                                    </div>
+                                    <div class="room-details">
+                                        <h4><%= room.name %></h4>
+                                        <div class="room-features">
+                                            <span class="room-feature">
+                                                <i class="fas fa-bed"></i> <%= room.bedType %>
+                                            </span>
+                                            <span class="room-feature">
+                                                <i class="fas fa-user-friends"></i> Up to <%= room.maxGuests %> guests
+                                            </span>
+                                            <span class="room-feature">
+                                                <i class="fas fa-expand"></i> <%= room.size %> m²
+                                            </span>
+                                        </div>
+                                        <div class="room-amenities">
+                                            <% room.amenities.forEach(amenity => { %>
+                                                <span class="room-feature">
+                                                    <i class="fas fa-check"></i> <%= amenity %>
+                                                </span>
+                                            <% }); %>
+                                        </div>
+                                        <div class="room-price">
+                                            $<%= room.price %> per night
+                                        </div>
+                                        <div class="booking-actions">
+                                            <a href="/booking/<%= hotel.id %>?room=<%= room.name %>" class="btn btn-primary">
+                                                <i class="fas fa-calendar-check"></i> Book Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="hotel-sidebar">
+                    <div class="hotel-info-card">
+                        <h3>Hotel Amenities</h3>
+                        <div class="amenities-list">
+                            <% hotel.amenities.forEach(amenity => { %>
+                                <div class="amenity-item">
+                                    <i class="fas fa-<%= amenity.toLowerCase().includes('wifi') ? 'wifi' : 
+                                        amenity.toLowerCase().includes('pool') ? 'swimming-pool' : 
+                                        amenity.toLowerCase().includes('spa') ? 'spa' : 
+                                        amenity.toLowerCase().includes('restaurant') ? 'utensils' : 'check' %>"></i>
+                                    <span><%= amenity %></span>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+
+                    <div class="hotel-info-card">
+                        <h3>Location</h3>
+                        <p><%= hotel.location %></p>
+                        <div class="booking-actions">
+                            <a href="/booking/<%= hotel.id %>" class="btn btn-secondary">
+                                <i class="fas fa-calendar-check"></i> Book Your Stay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <%- include('partials/footer') %>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+        </script>
+    </body>
+</html> 

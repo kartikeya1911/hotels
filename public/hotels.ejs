@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Our Hotels - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="/css/hotels.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'hotels' }) %>
+
+        <main class="hotels-container">
+            <div class="hero-section">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Our Hotels" />
+                <div class="overlay"></div>
+                <div class="content">
+                    <h1>Discover Luxury</h1>
+                    <div class="hero-line"></div>
+                    <p>Experience unparalleled comfort at our collection of premium hotels worldwide</p>
+                </div>
+            </div>
+
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search by hotel name, location, or amenities...">
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-group">
+                            <label for="locationFilter">Destination</label>
+                            <select id="locationFilter">
+                                <option value="">All Destinations</option>
+                                <option value="new-york">New York</option>
+                                <option value="london">London</option>
+                                <option value="paris">Paris</option>
+                                <option value="tokyo">Tokyo</option>
+                                <option value="dubai">Dubai</option>
+                                <option value="singapore">Singapore</option>
+                                <option value="sydney">Sydney</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="priceFilter">Price Range</label>
+                            <select id="priceFilter">
+                                <option value="">All Prices</option>
+                                <option value="budget">Budget ($100-200)</option>
+                                <option value="mid-range">Mid-Range ($200-400)</option>
+                                <option value="luxury">Luxury ($400+)</option>
+                                <option value="ultra-luxury">Ultra Luxury ($800+)</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="ratingFilter">Rating</label>
+                            <select id="ratingFilter">
+                                <option value="">All Ratings</option>
+                                <option value="5">5 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="3">3 Stars</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="amenitiesFilter">Amenities</label>
+                            <select id="amenitiesFilter">
+                                <option value="">All Amenities</option>
+                                <option value="spa">Spa</option>
+                                <option value="pool">Pool</option>
+                                <option value="restaurant">Restaurant</option>
+                                <option value="gym">Fitness Center</option>
+                                <option value="beach">Beach Access</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="hotels-content">
+                <div class="hotels-grid" id="hotelsGrid">
+                    <% hotels.forEach((hotel, index) => { %>
+                    <div class="hotel-card" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                        <div class="hotel-image">
+                            <img src="<%= hotel.image %>" alt="<%= hotel.name %>">
+                            <div class="hotel-rating">
+                                <% for(let i = 0; i < hotel.rating; i++) { %>
+                                    <i class="fas fa-star"></i>
+                                <% } %>
+                            </div>
+                            <div class="hotel-badge">
+                                <i class="fas fa-award"></i> Premium
+                            </div>
+                        </div>
+                        <div class="hotel-details">
+                            <h3><%= hotel.name %></h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> <%= hotel.location %></p>
+                            <p class="description"><%= hotel.description %></p>
+                            <div class="hotel-features">
+                                <% hotel.amenities.forEach(amenity => { %>
+                                    <span><i class="fas fa-<%= amenity.toLowerCase().includes('wifi') ? 'wifi' : 
+                                        amenity.toLowerCase().includes('pool') ? 'swimming-pool' : 
+                                        amenity.toLowerCase().includes('spa') ? 'spa' : 
+                                        amenity.toLowerCase().includes('restaurant') ? 'utensils' : 'check' %>"></i> <%= amenity %></span>
+                                <% }); %>
+                            </div>
+                            <div class="hotel-price">
+                                <span class="price">From $<%= hotel.price %>/night</span>
+                                <span class="price-note">Best rate guaranteed</span>
+                            </div>
+                            <div class="hotel-actions">
+                                <a href="/hotel/<%= hotel.id %>" class="btn btn-primary">
+                                    <i class="fas fa-info-circle"></i> View Details
+                                </a>
+                                <a href="/booking/<%= hotel.id %>" class="btn btn-secondary">
+                                    <i class="fas fa-calendar-check"></i> Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+
+                <div class="pagination">
+                    <button class="btn btn-secondary" id="prevPage" disabled>Previous</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button class="btn btn-secondary" id="nextPage" disabled>Next</button>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+
+            // Filter functionality
+            const searchInput = document.getElementById('searchInput');
+            const locationFilter = document.getElementById('locationFilter');
+            const priceFilter = document.getElementById('priceFilter');
+            const ratingFilter = document.getElementById('ratingFilter');
+            const amenitiesFilter = document.getElementById('amenitiesFilter');
+            const hotelCards = document.querySelectorAll('.hotel-card');
+
+            function filterHotels() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedLocation = locationFilter.value;
+                const selectedPrice = priceFilter.value;
+                const selectedRating = ratingFilter.value;
+                const selectedAmenity = amenitiesFilter.value;
+
+                hotelCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const location = card.querySelector('.location').textContent.toLowerCase();
+                    const price = card.querySelector('.price').textContent;
+                    const rating = card.querySelectorAll('.hotel-rating .fa-star').length;
+                    const amenities = Array.from(card.querySelectorAll('.hotel-features span'))
+                        .map(span => span.textContent.toLowerCase());
+
+                    const matchesSearch = title.includes(searchTerm) || location.includes(searchTerm);
+                    const matchesLocation = !selectedLocation || location.includes(selectedLocation);
+                    const matchesPrice = !selectedPrice || checkPriceRange(price, selectedPrice);
+                    const matchesRating = !selectedRating || rating === parseInt(selectedRating);
+                    const matchesAmenity = !selectedAmenity || amenities.some(amenity => 
+                        amenity.includes(selectedAmenity.toLowerCase()));
+
+                    card.style.display = matchesSearch && matchesLocation && matchesPrice && 
+                        matchesRating && matchesAmenity ? 'block' : 'none';
+                });
+            }
+
+            function checkPriceRange(price, range) {
+                const priceValue = parseInt(price.replace(/[^0-9]/g, ''));
+                switch(range) {
+                    case 'budget':
+                        return priceValue >= 100 && priceValue <= 200;
+                    case 'mid-range':
+                        return priceValue >= 200 && priceValue <= 400;
+                    case 'luxury':
+                        return priceValue >= 400 && priceValue <= 800;
+                    case 'ultra-luxury':
+                        return priceValue >= 800;
+                    default:
+                        return true;
+                }
+            }
+
+            // Add event listeners
+            searchInput.addEventListener('input', filterHotels);
+            locationFilter.addEventListener('change', filterHotels);
+            priceFilter.addEventListener('change', filterHotels);
+            ratingFilter.addEventListener('change', filterHotels);
+            amenitiesFilter.addEventListener('change', filterHotels);
+
+            // Booking functionality
+            function bookHotel(hotelId) {
+                // Redirect to booking page with hotel ID
+                window.location.href = `/booking/${hotelId}`;
+            }
+        </script>
+    </body>
+</html>

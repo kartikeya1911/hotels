@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Virtual Tours - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/experiences.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'virtual-tours' }) %>
+
+        <main class="virtual-tours-container">
+            <div class="hero-section" data-aos="fade">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="LuxeStay Virtual Tours" />
+                <div class="overlay"></div>
+                <div class="content">
+                    <h1 data-aos="fade-up" data-aos-delay="200">Virtual Tours</h1>
+                    <div class="hero-line"></div>
+                    <p data-aos="fade-up" data-aos-delay="400">Explore our hotels from anywhere in the world</p>
+                </div>
+            </div>
+
+            <section class="virtual-tours-content">
+                <div class="tours-grid">
+                    <div class="tour-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tour-preview">
+                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel Lobby">
+                            <div class="tour-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="tour-details">
+                            <h3>Luxury Lobby</h3>
+                            <p>Experience the grandeur of our main lobby area.</p>
+                            <div class="features">
+                                <span><i class="fas fa-couch"></i> Seating Areas</span>
+                                <span><i class="fas fa-concierge-bell"></i> Concierge</span>
+                                <span><i class="fas fa-glass-martini-alt"></i> Lounge</span>
+                            </div>
+                            <button class="btn-primary" onclick="startTour('lobby')">Start Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="tour-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="tour-preview">
+                            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Presidential Suite">
+                            <div class="tour-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="tour-details">
+                            <h3>Presidential Suite</h3>
+                            <p>Take a virtual walk through our most luxurious suite.</p>
+                            <div class="features">
+                                <span><i class="fas fa-bed"></i> King Bed</span>
+                                <span><i class="fas fa-bath"></i> Jacuzzi</span>
+                                <span><i class="fas fa-city"></i> City View</span>
+                            </div>
+                            <button class="btn-primary" onclick="startTour('suite')">Start Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="tour-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="tour-preview">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fine Dining">
+                            <div class="tour-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="tour-details">
+                            <h3>Fine Dining Restaurant</h3>
+                            <p>Explore our award-winning restaurant.</p>
+                            <div class="features">
+                                <span><i class="fas fa-utensils"></i> Fine Dining</span>
+                                <span><i class="fas fa-wine-glass-alt"></i> Wine Cellar</span>
+                                <span><i class="fas fa-star"></i> Michelin Rated</span>
+                            </div>
+                            <button class="btn-primary" onclick="startTour('restaurant')">Start Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="tour-card" data-aos="fade-up" data-aos-delay="800">
+                        <div class="tour-preview">
+                            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Spa & Wellness">
+                            <div class="tour-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="tour-details">
+                            <h3>Spa & Wellness</h3>
+                            <p>Discover our state-of-the-art spa facilities.</p>
+                            <div class="features">
+                                <span><i class="fas fa-spa"></i> Treatment Rooms</span>
+                                <span><i class="fas fa-swimming-pool"></i> Pool</span>
+                                <span><i class="fas fa-dumbbell"></i> Fitness Center</span>
+                            </div>
+                            <button class="btn-primary" onclick="startTour('spa')">Start Tour</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-features" data-aos="fade-up">
+                    <h2>Tour Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-vr-cardboard"></i>
+                            <h3>360° Views</h3>
+                            <p>Immersive panoramic views of every space</p>
+                        </div>
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile Compatible</h3>
+                            <p>Experience tours on any device</p>
+                        </div>
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="600">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>Interactive Points</h3>
+                            <p>Click to learn more about features</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Tour Viewer Modal -->
+        <div class="modal" id="tourModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="tourViewer"></div>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+        </script>
+        <script src="/js/script.js"></script>
+        <script src="/js/virtual-tours.js"></script>
+    </body>
+</html>

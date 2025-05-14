@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&h=32&q=80">
+</head>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-hotel"></i>
+            </div>
+            <span class="logo-text">LuxeStay</span>
+        </div>
+
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links">
+            <a href="/" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            
+            <div class="dropdown">
+                <a href="/hotels" class="nav-link">
+                    <i class="fas fa-hotel"></i>
+                    <span>Accommodations</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="/hotels">
+                        <i class="fas fa-building"></i>
+                        Our Hotels
+                    </a>
+                    <a href="/rooms">
+                        <i class="fas fa-bed"></i>
+                        Rooms & Suites
+                    </a>
+                    <a href="/virtual-tours">
+                        <i class="fas fa-vr-cardboard"></i>
+                        Virtual Tours
+                    </a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="/experiences" class="nav-link">
+                    <i class="fas fa-star"></i>
+                    <span>Experiences</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="/dining">
+                        <i class="fas fa-utensils"></i>
+                        Dining
+                    </a>
+                    <a href="/spa">
+                        <i class="fas fa-spa"></i>
+                        Spa & Wellness
+                    </a>
+                    <a href="/events">
+                        <i class="fas fa-calendar-alt"></i>
+                        Events
+                    </a>
+                </div>
+            </div>
+
+            <a href="/sustainability" class="nav-link">
+                <i class="fas fa-leaf"></i>
+                <span>Sustainability</span>
+            </a>
+
+            <a href="/about" class="nav-link">
+                <i class="fas fa-info-circle"></i>
+                <span>About Us</span>
+            </a>
+            
+            <a href="/contact" class="nav-link">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+
+        <div class="nav-right">
+            <div class="user-menu" id="userMenu">
+                <button class="user-menu-btn">
+                    <i class="fas fa-user"></i>
+                    <span id="userName">My Account</span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/dashboard">
+                        <i class="fas fa-user-circle"></i>
+                        My Profile
+                    </a>
+                    <a href="/bookings">
+                        <i class="fas fa-calendar-check"></i>
+                        My Bookings
+                    </a>
+                    <a href="/logout" class="logout-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+            <div class="auth-buttons" id="authButtons">
+                <a href="/login" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+                <a href="/register" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Register</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const userMenu = document.querySelector('.user-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        userMenu.classList.toggle('active');
+    });
+
+    // Dropdown menus
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.nav-link');
+        const content = dropdown.querySelector('.dropdown-content');
+
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 0) {
+            navbar.classList.remove('scroll-up');
+            return;
+        }
+
+        if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
+            navbar.classList.remove('scroll-up');
+            navbar.classList.add('scroll-down');
+        } else if (currentScroll < lastScroll && navbar.classList.contains('scroll-down')) {
+            navbar.classList.remove('scroll-down');
+            navbar.classList.add('scroll-up');
+        }
+        lastScroll = currentScroll;
+    });
+
+    // Check authentication status and update UI
+    document.addEventListener('DOMContentLoaded', function() {
+        const authToken = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+        const userMenu = document.getElementById('userMenu');
+        const authButtons = document.getElementById('authButtons');
+        const userNameSpan = document.getElementById('userName');
+        
+        if (authToken) {
+            // User is logged in
+            userMenu.style.display = 'block';
+            authButtons.style.display = 'none';
+            
+            // Fetch user data
+            fetchUserData();
+        } else {
+            // User is logged out
+            userMenu.style.display = 'none';
+            authButtons.style.display = 'flex';
+        }
+    });
+
+    // Function to fetch user data
+    async function fetchUserData() {
+        try {
+            const authToken = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+            
+            const response = await fetch('/api/user/profile', {
+                headers: {
+                    'Authorization': `Bearer ${authToken}`
+                }
+            });
+            
+            if (response.ok) {
+                const userData = await response.json();
+                document.getElementById('userName').textContent = userData.firstName;
+            }
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+        }
+    }
+
+    // Handle logout
+    document.querySelector('.logout-link').addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        try {
+            const response = await fetch('/api/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Clear any stored auth data
+                localStorage.removeItem('authToken');
+                sessionStorage.removeItem('authToken');
+                
+                // Show success message
+                showNotification('Logged out successfully', 'success');
+                
+                // Redirect to home page after a short delay
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1000);
+            } else {
+                showNotification('Error logging out', 'error');
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+            showNotification('Error logging out', 'error');
+        }
+    });
+
+    // Function to show notifications
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+</script>
+
+<script src="/js/auth.js"></script>
