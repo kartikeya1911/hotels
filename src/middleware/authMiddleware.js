@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
-const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'your-refresh-secret-key';
 
 // Middleware to verify access token
 const authenticateToken = async (req, res, next) => {
@@ -44,37 +43,6 @@ const authenticateToken = async (req, res, next) => {
     }
 };
 
-// Middleware to verify refresh token
-const authenticateRefreshToken = async (req, res, next) => {
-    try {
-        const { refreshToken } = req.body;
-
-        if (!refreshToken) {
-            return res.status(401).json({ 
-                success: false,
-                message: 'Refresh token is required' 
-            });
-        }
-
-        const decoded = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
-        const user = await User.findById(decoded.userId);
-
-        if (!user || user.refreshToken !== refreshToken) {
-            return res.status(403).json({ 
-                success: false,
-                message: 'Invalid refresh token' 
-            });
-        }
-
-        req.user = user;
-        next();
-    } catch (error) {
-        return res.status(403).json({ 
-            success: false,
-            message: 'Invalid refresh token' 
-        });
-    }
-};
 
 // Role-based authorization middleware
 const authorizeRoles = (...roles) => {
@@ -97,32 +65,7 @@ const authorizeRoles = (...roles) => {
     };
 };
 
-// Email verification check middleware
-const checkEmailVerification = async (req, res, next) => {
-    try {
-        if (!req.user) {
-            return res.status(401).json({ 
-                success: false,
-                message: 'Authentication required' 
-            });
-        }
-
-        if (!req.user.isVerified) {
-            return res.status(403).json({ 
-                success: false,
-                message: 'Please verify your email address first' 
-            });
-        }
-
-        next();
-    } catch (error) {
-        next(error);
-    }
-};
-
 module.exports = {
     authenticateToken,
-    authenticateRefreshToken,
     authorizeRoles,
-    checkEmailVerification
 };
