@@ -6,7 +6,7 @@ const session = require('express-session');
 const connectDB = require('./src/config/database');
 const User = require('./src/models/user');
 const Booking = require('./src/models/booking');
-const Contact = require('./models/Contact');
+const Contact = require('./src/models/Contact');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
