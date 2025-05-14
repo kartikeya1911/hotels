@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Spa & Wellness - LuxeStay Hotels</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+        <link rel="stylesheet" href="/css/experiences.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { currentPage: 'spa' }) %>
+
+        <main class="spa-container">
+            <div class="hero-section" data-aos="fade">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Spa & Wellness" />
+                <div class="overlay"></div>
+                <div class="content">
+                    <h1 data-aos="fade-up" data-aos-delay="200">Spa & Wellness</h1>
+                    <div class="hero-line"></div>
+                    <p data-aos="fade-up" data-aos-delay="400">Relax, rejuvenate, and restore</p>
+                </div>
+            </div>
+
+            <section class="spa-content">
+                <div class="treatments-grid">
+                    <div class="treatment-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Massage Therapy">
+                        <div class="treatment-info">
+                            <h3>Massage Therapy</h3>
+                            <p class="duration">60-120 minutes</p>
+                            <p class="description">Experience deep relaxation with our signature massage treatments.</p>
+                            <div class="features">
+                                <span><i class="fas fa-spa"></i> Aromatherapy</span>
+                                <span><i class="fas fa-hand-sparkles"></i> Deep Tissue</span>
+                                <span><i class="fas fa-leaf"></i> Natural Oils</span>
+                            </div>
+                            <button class="btn-primary">Book Treatment</button>
+                        </div>
+                    </div>
+
+                    <div class="treatment-card" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RmFjaWFsJTIwVHJlYXRtZW50c3xlbnwwfHwwfHx8MA%3D%3D" alt="Facial Treatments">
+                        <div class="treatment-info">
+                            <h3>Facial Treatments</h3>
+                            <p class="duration">45-90 minutes</p>
+                            <p class="description">Rejuvenate your skin with our premium facial treatments.</p>
+                            <div class="features">
+                                <span><i class="fas fa-gem"></i> Premium Products</span>
+                                <span><i class="fas fa-magic"></i> Anti-Aging</span>
+                                <span><i class="fas fa-sun"></i> UV Protection</span>
+                            </div>
+                            <button class="btn-primary">Book Treatment</button>
+                        </div>
+                    </div>
+
+                    <div class="treatment-card" data-aos="fade-up" data-aos-delay="600">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Body Treatments">
+                        <div class="treatment-info">
+                            <h3>Body Treatments</h3>
+                            <p class="duration">90-120 minutes</p>
+                            <p class="description">Indulge in luxurious body wraps and scrubs.</p>
+                            <div class="features">
+                                <span><i class="fas fa-pump-soap"></i> Body Wraps</span>
+                                <span><i class="fas fa-hand-sparkles"></i> Exfoliation</span>
+                                <span><i class="fas fa-spa"></i> Hydration</span>
+                            </div>
+                            <button class="btn-primary">Book Treatment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wellness-packages" data-aos="fade-up">
+                    <h2>Wellness Packages</h2>
+                    <div class="packages-grid">
+                        <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://plus.unsplash.com/premium_photo-1661764501975-48ea595e7f2d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8RGF5JTIwb2YlMjBSZWxheGF0aW9uJTIwRnVsbCUyMGRheSUyMHNwYSUyMGV4cGVyaWVuY2UlMjB3aXRoJTIwbHVuY2glMjBpbmNsdWRlZCUyMCUyMFdlbGNvbWUlMjBEcmluayUyMDkwJTIwbWluJTIwTWFzc2FnZSUyMEZhY2lhbCUyMFRyZWF0bWVudCUyMEdvdXJtZXQlMjBMdW5jaHxlbnwwfHwwfHx8MA%3D%3D" alt="Day of Relaxation">
+                            <div class="package-info">
+                                <h3>Day of Relaxation</h3>
+                                <p>Full day spa experience with lunch included</p>
+                                <ul>
+                                    <li>Welcome Drink</li>
+                                    <li>90-min Massage</li>
+                                    <li>Facial Treatment</li>
+                                    <li>Gourmet Lunch</li>
+                                </ul>
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="package-card" data-aos="fade-up" data-aos-delay="400">
+                            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Couples Retreat">
+                            <div class="package-info">
+                                <h3>Couples Retreat</h3>
+                                <p>Romantic spa experience for two</p>
+                                <ul>
+                                    <li>Couples Massage</li>
+                                    <li>Champagne Service</li>
+                                    <li>Private Suite</li>
+                                    <li>Rose Petal Bath</li>
+                                </ul>
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+        </script>
+        <script src="/js/script.js"></script>
+    </body>
+</html>

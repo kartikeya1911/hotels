@@ -1,0 +1,733 @@
+/* Common Styles for Experience Pages */
+.hero-section {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.hero-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.hero-section:hover img {
+    transform: scale(1.05);
+}
+
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+}
+
+.hero-section .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.hero-section .content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.3s;
+}
+
+.hero-line {
+    width: 100px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 1rem auto;
+    opacity: 0;
+    transform: scaleX(0);
+    animation: lineGrow 0.8s ease forwards 0.6s;
+}
+
+/* Grid Layouts */
+.restaurants-grid,
+.treatments-grid,
+.venues-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    padding: 2rem 5%;
+    margin-bottom: 4rem;
+}
+
+/* Cards */
+.restaurant-card,
+.treatment-card,
+.venue-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.restaurant-card:hover,
+.treatment-card:hover,
+.venue-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.restaurant-card img,
+.treatment-card img,
+.venue-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.restaurant-card:hover img,
+.treatment-card:hover img,
+.venue-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Card Info Sections */
+.restaurant-info,
+.treatment-info,
+.venue-info {
+    padding: 2rem;
+}
+
+.restaurant-info h3,
+.treatment-info h3,
+.venue-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.cuisine,
+.duration,
+.capacity {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Features */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.features span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--light-bg);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.features span:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.features i {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.features span:hover i {
+    color: white;
+}
+
+/* Special Offers & Packages */
+.special-offers,
+.wellness-packages,
+.event-packages {
+    padding: 4rem 5%;
+    background: var(--light-bg);
+}
+
+.special-offers h2,
+.wellness-packages h2,
+.event-packages h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+}
+
+.offers-grid,
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.offer-card,
+.package-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.offer-card:hover,
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.offer-card img,
+.package-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.offer-card:hover img,
+.package-card:hover img {
+    transform: scale(1.1);
+}
+
+.offer-info,
+.package-info {
+    padding: 2rem;
+}
+
+.offer-info h3,
+.package-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.offer-info p,
+.package-info p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.package-info ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.package-info ul li {
+    padding: 0.5rem 0;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.package-info ul li:before {
+    content: '✓';
+    color: var(--primary-color);
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
+}
+
+.btn-secondary {
+    background: var(--light-bg);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineGrow {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-section {
+        height: 60vh;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+    .restaurants-grid,
+    .treatments-grid,
+    .venues-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem 3%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 50vh;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .restaurants-grid,
+    .treatments-grid,
+    .venues-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem 5%;
+    }
+
+    .special-offers,
+    .wellness-packages,
+    .event-packages {
+        padding: 3rem 5%;
+    }
+
+    .offers-grid,
+    .packages-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Virtual Tours Styles */
+.virtual-tours-container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.virtual-tours-container .hero-section {
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.virtual-tours-container .hero-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.virtual-tours-container .hero-section:hover img {
+    transform: scale(1.05);
+}
+
+.virtual-tours-container .hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+}
+
+.virtual-tours-container .hero-section .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.virtual-tours-container .hero-section .content h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+
+.virtual-tours-container .hero-section .hero-line {
+    width: 150px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 1.5rem auto;
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: lineGrow 1s ease forwards 0.8s;
+}
+
+.virtual-tours-container .hero-section p {
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.virtual-tours-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    padding: 2rem 0;
+}
+
+.tour-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tour-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.tour-preview {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.tour-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.tour-card:hover .tour-preview img {
+    transform: scale(1.1);
+}
+
+.tour-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tour-card:hover .tour-overlay {
+    opacity: 1;
+}
+
+.tour-overlay i {
+    font-size: 3rem;
+    color: white;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.tour-card:hover .tour-overlay i {
+    transform: scale(1);
+}
+
+.tour-details {
+    padding: 2rem;
+}
+
+.tour-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.tour-details p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.tour-features {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.tour-features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    padding: 0 2rem;
+}
+
+.feature-item {
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.feature-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.feature-item p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 2% auto;
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+#tourViewer {
+    width: 100%;
+    height: 70vh;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .virtual-tours-container .hero-section h1 {
+        font-size: 3.5rem;
+    }
+    
+    .virtual-tours-container .hero-section p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .virtual-tours-container .hero-section {
+        height: 70vh;
+    }
+    
+    .virtual-tours-container .hero-section h1 {
+        font-size: 3rem;
+    }
+    
+    .virtual-tours-container .hero-section p {
+        font-size: 1.3rem;
+    }
+    
+    .tours-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .virtual-tours-container .hero-section {
+        height: 60vh;
+    }
+    
+    .virtual-tours-container .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .virtual-tours-container .hero-section p {
+        font-size: 1.1rem;
+    }
+    
+    .virtual-tours-container .hero-section .hero-line {
+        width: 100px;
+    }
+    
+    .virtual-tours-content {
+        padding: 2rem 1rem;
+    }
+    
+    .tours-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .tour-preview {
+        height: 200px;
+    }
+
+    .tour-features h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 1rem;
+    }
+
+    #tourViewer {
+        height: 50vh;
+    }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+} 
