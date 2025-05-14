@@ -1,15 +1,22 @@
 const express = require('express');
 const path = require('path');
+<<<<<<< HEAD
+=======
+const jwt = require('jsonwebtoken');
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const connectDB = require('./src/config/database');
 const User = require('./src/models/user');
 const Booking = require('./src/models/booking');
 const Contact = require('./src/models/Contact');
+<<<<<<< HEAD
 const MongoStore = require('connect-mongo');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
+=======
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,10 +36,13 @@ app.use(session({
     secret: SECRET_KEY,
     resave: false,
     saveUninitialized: false,
+<<<<<<< HEAD
     store: MongoStore.create({
         mongoUrl: process.env.MONGO_URI || 'mongodb://localhost:27017/hotel_hub',
         collectionName: 'sessions'
     }),
+=======
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
     cookie: { 
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
@@ -927,7 +937,10 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+<<<<<<< HEAD
 
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(cors());
+=======
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342

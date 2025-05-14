@@ -38,4 +38,8 @@ const contactSchema = new mongoose.Schema({
     }
 });
 
+<<<<<<< HEAD
 module.exports = mongoose.model('Contact', contactSchema); 
+=======
+module.exports = mongoose.model('Contact', contactSchema); 
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342

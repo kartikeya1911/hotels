@@ -1,18 +1,27 @@
 /* Register Page Styles */
 .register-container {
     min-height: 100vh;
+<<<<<<< HEAD
     background: linear-gradient(rgba(20, 20, 40, 0.7), rgba(20, 20, 40, 0.7)),
+=======
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
                 url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+<<<<<<< HEAD
     padding: 1.5rem 0.5rem;
+=======
+    padding: 4rem 2rem;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .register-content {
+<<<<<<< HEAD
     background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(6px);
     border-radius: 10px;
@@ -26,6 +35,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+=======
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 3rem;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .register-content::before {
@@ -34,12 +54,17 @@
     top: 0;
     left: 0;
     width: 100%;
+<<<<<<< HEAD
     height: 4px;
+=======
+    height: 5px;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
     background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
 }
 
 .register-header {
     text-align: center;
+<<<<<<< HEAD
     margin-bottom: 1.5rem;
 }
 
@@ -49,36 +74,67 @@
     margin-bottom: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.5px;
+=======
+    margin-bottom: 3rem;
+}
+
+.register-header h1 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .register-header p {
     color: var(--text-muted);
+<<<<<<< HEAD
     font-size: 1rem;
+=======
+    font-size: 1.1rem;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .form-grid {
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem 2rem;
     margin-bottom: 1.2rem;
     width: 100%;
+=======
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .form-group {
     position: relative;
+<<<<<<< HEAD
     width: 100%;
     display: flex;
     flex-direction: column;
+=======
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .form-group label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+<<<<<<< HEAD
     margin-bottom: 0.35rem;
     color: var(--text-dark);
     font-weight: 500;
     font-size: 0.98rem;
+=======
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .form-group label i {
@@ -88,21 +144,35 @@
 
 .form-group input {
     width: 100%;
+<<<<<<< HEAD
     padding: 0.7rem 0.7rem 0.7rem 2.3rem;
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 0.98rem;
     transition: border-color 0.2s;
     background: #fafbfc;
+=======
+    padding: 0.85rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .form-group input:focus {
     border-color: var(--primary-color);
+<<<<<<< HEAD
     background: #fff;
+=======
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
     outline: none;
 }
 
 .form-actions {
+<<<<<<< HEAD
     width: 100%;
     display: flex;
     justify-content: center;
@@ -143,13 +213,48 @@
     margin-top: 0.5rem;
     color: var(--text-muted);
     font-size: 0.97rem;
+=======
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-actions .btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.form-actions .btn i {
+    font-size: 1.2rem;
+}
+
+.form-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
+}
+
+.form-footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .form-footer a {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
+<<<<<<< HEAD
     transition: color 0.2s;
+=======
+    transition: color 0.3s ease;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .form-footer a:hover {
@@ -161,12 +266,18 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
+<<<<<<< HEAD
     padding: 13px 22px;
     border-radius: 5px;
+=======
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
     color: white;
     font-weight: 500;
     z-index: 1000;
     animation: slideIn 0.3s ease-out;
+<<<<<<< HEAD
     font-size: 1rem;
 }
 .notification.error { background-color: #dc3545; }
@@ -174,6 +285,27 @@
 @keyframes slideIn {
     from { transform: translateX(100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
+=======
+}
+
+.notification.error {
+    background-color: #dc3545;
+}
+
+.notification.info {
+    background-color: var(--primary-color);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 /* Footer Styles for Register Page */
@@ -182,13 +314,21 @@
     bottom: auto;
     left: auto;
     width: 100%;
+<<<<<<< HEAD
     margin-top: 2rem;
+=======
+    margin-top: 4rem;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
     background-color: var(--dark-bg);
     backdrop-filter: none;
 }
 
 .register-container .footer-container {
+<<<<<<< HEAD
     padding: 2rem 1rem 1rem;
+=======
+    padding: 4rem 2rem 2rem;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
 }
 
 .register-container .footer-section h3,
@@ -200,6 +340,7 @@
 
 .register-container .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+<<<<<<< HEAD
     padding: 1.2rem;
     margin-top: 1.5rem;
 }
@@ -211,6 +352,36 @@
     }
     .register-header h1 {
         font-size: 1.3rem;
+=======
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+/* Navbar adjustments */
+.register-container .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .register-container {
+        padding: 2rem 1rem;
+    }
+
+    .register-content {
+        padding: 2rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .register-header h1 {
+        font-size: 2rem;
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
     }
 }
 

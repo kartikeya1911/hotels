@@ -68,4 +68,8 @@ const authorizeRoles = (...roles) => {
 module.exports = {
     authenticateToken,
     authorizeRoles,
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 5e11ea609219d455b837c9e073c39f1ca06ed342
